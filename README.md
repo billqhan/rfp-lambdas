@@ -1,3 +1,4 @@
+[![CI/CD](https://github.com/billqhan/rfp-lambdas/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/billqhan/rfp-lambdas/actions)
 # RFP Response Platform - Lambda Functions
 
 Python Lambda functions for the RFP Response Platform backend processing.
