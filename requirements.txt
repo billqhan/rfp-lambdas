@@ -1,0 +1,23 @@
+# AWS SDK
+boto3>=1.28.0
+botocore>=1.31.0
+
+# HTTP and API
+requests>=2.31.0
+
+# Data processing
+python-dateutil>=2.8.2
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.1
+moto>=4.2.0
+
+# Code quality
+black>=23.7.0
+flake8>=6.1.0
+mypy>=1.5.0
+
+# Optional: Add specific Lambda dependencies as needed
+# boto3-stubs[lambda,s3,dynamodb,sqs,secretsmanager]
