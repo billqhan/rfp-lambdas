@@ -76,10 +76,12 @@ jobs:
         function:
           - sam-gov-daily-download
           - sam-json-processor
-          - sam-batch-matching
           - sam-sqs-generate-match-reports
-          - sam-web-reports
           - sam-daily-email-notification
+          - sam-email-notification
+          - sam-merge-and-archive-result-logs
+          - sam-produce-user-report
+          - sam-produce-web-reports
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -128,10 +130,12 @@ jobs:
         function:
           - sam-gov-daily-download
           - sam-json-processor
-          - sam-batch-matching
           - sam-sqs-generate-match-reports
-          - sam-web-reports
           - sam-daily-email-notification
+          - sam-email-notification
+          - sam-merge-and-archive-result-logs
+          - sam-produce-user-report
+          - sam-produce-web-reports
     steps:
       - name: Download Lambda package
         uses: actions/download-artifact@v4
@@ -168,10 +172,12 @@ jobs:
         function:
           - sam-gov-daily-download
           - sam-json-processor
-          - sam-batch-matching
           - sam-sqs-generate-match-reports
-          - sam-web-reports
           - sam-daily-email-notification
+          - sam-email-notification
+          - sam-merge-and-archive-result-logs
+          - sam-produce-user-report
+          - sam-produce-web-reports
     steps:
       - name: Download Lambda package
         uses: actions/download-artifact@v4

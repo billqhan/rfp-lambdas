@@ -107,31 +107,56 @@ mypy lambdas/ shared/
 
 ## Deployment
 
-### Deploy All Functions
+### Automated Deployment (Recommended)
+
+The CI/CD pipeline automatically deploys Lambda functions:
+- **Dev**: Push to `develop` branch → deploys to development environment
+- **Prod**: Push to `main` branch → deploys to production environment
+
+See [.github/workflows/ci-cd.yml](.github/workflows/ci-cd.yml) for pipeline configuration.
+
+### Manual Deployment Script
+
+Use the deployment script for local/manual deployments or hotfixes:
 
 ```bash
 # Deploy all Lambda functions to dev
-./scripts/deploy-all.sh dev
+./deploy-lambdas.sh dev
 
-# Deploy to production
-./scripts/deploy-all.sh prod
+# Deploy all functions to production
+./deploy-lambdas.sh prod
+
+# Deploy a single function
+./deploy-lambdas.sh dev sam-json-processor
+
+# Set custom AWS region
+export AWS_REGION=us-west-2
+./deploy-lambdas.sh dev
 ```
 
-### Deploy Single Function
+The script will:
+1. ✅ Validate prerequisites (AWS CLI, Python, pip)
+2. 📦 Package each function with dependencies
+3. 📚 Include shared libraries automatically
+4. 🚀 Deploy to AWS Lambda (updates existing functions)
+5. ✨ Clean up temporary files
+6. 📊 Display deployment summary
+
+**Prerequisites:**
+- AWS CLI configured with valid credentials
+- Lambda functions must exist in AWS (create via infrastructure deployment first)
+- IAM permissions to update Lambda functions
+
+### First-Time Setup
+
+If Lambda functions don't exist yet, deploy infrastructure first:
 
 ```bash
-# Deploy specific Lambda function
-./scripts/deploy-lambda.sh sam-json-processor dev
+cd ../rfp-infrastructure
+./scripts/deploy-infra.sh dev
 ```
 
-### Package Lambda Function
-
-```bash
-# Package function with dependencies
-./scripts/package-lambda.sh sam-json-processor
-
-# Output: lambda-packages/sam-json-processor.zip
-```
+This creates all Lambda functions, IAM roles, event triggers, and dependencies.
 
 ## Environment Variables
 
